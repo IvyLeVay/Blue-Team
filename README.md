@@ -1,3 +1,8 @@
-# Blue-Team
-Test Commit - Stephen O'Meara
-Test Commit - Chris
+Blue-Team
+=========
+
+Successful Commiters
+ 
+* Test Commit - Stephen O'Meara
+* Test Commit - Chris
+* Test Commit - Christopher Nellis
