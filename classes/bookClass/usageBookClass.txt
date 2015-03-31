@@ -1,3 +1,27 @@
 Please write down usage of this class here:
 
+Usage for Books class: 
 
+Default: Books myBook = new Books();
+With Parameters: Books myBook = new Books(0451524934, "1984", "George Orwell", "Signet Classic", 1949, 328, 4.5);
+
+Properties of Books
+
+	Name				Type		Variable Name
+	
+	ISBN				long		lngISBN
+	Title				String		strTitle
+	Author				String		strAuthor
+	Publisher			String		strPublisher
+	Publication Year		int		intPubDate
+	Pages				int 		intPages
+	Rating				double		dblRating
+
+Methods of Books
+	
+	** isBookLong() will determine if a book is long based on whether it
+       	** has more than 500 pages. If yes, it returns true.
+	boolean isBookLong(Books);
+
+	** toString() will return the full string of the Book.
+	String toString();
