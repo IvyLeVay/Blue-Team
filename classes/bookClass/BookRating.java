@@ -7,7 +7,7 @@ public class BookRating {
 
     float fltRating; // Float number of a rating. 0.0-5.0 Range.
     float fltLongRating; // Float long book rating. 0.0-5.0 Range. 0 for short, 5 for long.
-    float fltFicNonFicRating; // Float of fiction/non-fiction rating. -5.0-5.0 Range. -5 for fiction, 5 for Non-fiction.
+    float fltFicNonFicRating; // Float of fiction/non-fiction rating. 0.0-5.0 Range.
     float fltGenreRating; // Float of Genre Rating. 0.0-5.0 Range.
     float[][] arrRating = new float[2][2];
 
@@ -98,14 +98,14 @@ public class BookRating {
         float[] rtnArrRating = new float[4];
         rtnArrRating[0] = this.getFltRating();
         if (pBook.isBookLong(pBook)) {
-            rtnArrRating[1] = this.getArrRating()[1][0]-(this.getArrRating()[1][0]*2);
+            rtnArrRating[1] = this.getArrRating()[1][0];
         }
         else {
 
             rtnArrRating[1] = this.getArrRating()[0][0];
         }
         if (pBook.getBoolFicNonFic()){
-            rtnArrRating[2] = this.getArrRating()[1][1]-(this.getArrRating()[1][1]*2);
+            rtnArrRating[2] = this.getArrRating()[1][1];
         }
         else {
             rtnArrRating[2] = this.getArrRating()[0][1];
