@@ -150,10 +150,10 @@ public class Books {
 
         System.out.println("\n***** ADD RATINGS TO BOOK RATINGS CLASS *****\n");
 
-        book1.rateBook(4.4f, 4.5f, 4.9f, 4.7f);
-        book2.rateBook(3.4f, 2.5f, 2.9f, 2.7f);
-        book3.rateBook(2.4f, 1.5f, 3.9f, 3.7f);
-        book4.rateBook(4.8f, 3.5f, 1.9f, 2.7f);
+        book1.rateBook(4.4f, 4.5f, 4.7f);
+        book2.rateBook(3.4f, 2.9f, 2.7f);
+        book3.rateBook(1.5f, 3.9f, 3.7f);
+        book4.rateBook(4.8f, 3.5f, 2.7f);
 
         System.out.println(book1.toString());
         System.out.println(book2.toString());
@@ -195,9 +195,9 @@ public class Books {
         return ficOrNon;
     }
 
-    /* rateBook(float, float, float, float) will use the setRatings method in the BookRating class.
+    /* rateBook(float, float, float) will use the setRatings method in the BookRating class.
     */
-    public void rateBook(float pRating, float pLongRating, float pFicNonFicRating, float pGenreRating){
-        this.ratingBlob.setRatings(this, pRating, pLongRating, pFicNonFicRating, pGenreRating);
+    public void rateBook(float pRating, float pShortLongRating, float pFicNonFicRating){
+        this.ratingBlob.setRatings(this, pRating, pShortLongRating, pShortLongRating, pFicNonFicRating, pFicNonFicRating);
     }
 }
