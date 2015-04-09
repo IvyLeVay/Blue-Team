@@ -29,6 +29,7 @@ public class Recommendation {
                 crntBook.getBookRating().printRatings();
                 System.out.println(getMatch(crntBook));
                 //bookList add to back / also needs to have sentinel 
+                //Books should be a circular linked list
             }
         }
 
