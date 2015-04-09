@@ -28,6 +28,7 @@ public class Recommendation {
                 Book crntBook = bookList.remove();
                 crntBook.getBookRating().printRatings();
                 System.out.println(getMatch(crntBook));
+                //bookList add to back / also needs to have sentinel 
             }
         }
 
