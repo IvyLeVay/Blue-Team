@@ -23,13 +23,22 @@ public class Recommendation {
 
         public Crawler(User user, LinkedList<Book> bookList) {
             this.user = user;
+            //need to get most likely to be replaced rating
+            //worstMatch = user.getWorstMatch();
+            worstMatch = .5f //user.getWorse() , should be callable
             user.printUserPrefs();
             while (!bookList.isEmpty()) {
                 Book crntBook = bookList.remove();
                 crntBook.getBookRating().printRatings();
                 System.out.println(getMatch(crntBook));
-                //bookList add to back / also needs to have sentinel 
-                //Books should be a circular linked list
+                //need to traverse in a way that makes sense
+                //pass the book to get match
+                
+                if(getMatch(crntBook) < worstMatch){
+                    //user.addToRecommend(crntBook);
+                    worstMatch = .5f;// user.getWorse();
+                }
+                
             }
         }
 
