@@ -7,7 +7,7 @@ public class Main {
 
     /* Class: Main
 *  Author: Christopher Nellis
-*  Description:
+*  Description: This is Main class for the entire project.
 */
 
     public static void main(String [ ] args)
