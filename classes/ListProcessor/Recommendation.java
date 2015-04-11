@@ -25,11 +25,11 @@ public class Recommendation {
             this.user = user;
             //need to get most likely to be replaced rating
             //worstMatch = user.getWorstMatch();
-            worstMatch = .5f //user.getWorse() , should be callable
+            worstMatch = .5f; //user.getWorse() , should be callable
             user.printUserPrefs();
             while (!bookList.isEmpty()) {
                 Book crntBook = bookList.remove();
-                crntBook.getBookRating().printRatings();
+                crntBook.getBookRating().toString();
                 System.out.println(getMatch(crntBook));
                 //need to traverse in a way that makes sense
                 //pass the book to get match
@@ -44,15 +44,15 @@ public class Recommendation {
 
         private float getMatch(Book book) {
             float match = 0;
-            book.getBookRating().printRatings();
+            book.getBookRating().toString();
             for (int i = 0; i < 2; i++) {
                 if (user.getUserPref()[i] < 0) {
                     System.out.println(user.getUserPref()[i]);
                     match += abs(user.getUserPref()[i] + book.getBookRating().getRatingMatrix()[1][i]);
                 } else {
                     System.out.println(user.getUserPref()[i]);
-                    System.out.println("@" + book.getBookRating().getRatingMatrix()[1][i]);
-                    match += (user.getUserPref()[i] - book.getBookRating().ratingMatrix[1][i]);
+                    System.out.println("@" + String.valueOf(book.getRating().getRatingMatrix()[1][i]));
+                    match += (user.getUserPref()[i] - book.getBookRating().getRatingMatrix()[1][i]);
                 }
             }
             return match;
@@ -73,7 +73,7 @@ public class Recommendation {
    
         //book.getBookRating().printRatings();
        // user.printUserPrefs();
-        LinkedList<Book> books = new LinkedList<>();
+        LinkedList<Book> books = new LinkedList<Book>();
         books.add(book);
         Crawler crawl = new Crawler(user, books);
 

@@ -1,12 +1,12 @@
-package com.company;
+package recommendation;
 
-/* Class: Books
+/* Class: Book
 *  Author: Christopher Nellis
-*  Description: Stores information about the Books class.
+*  Description: Stores information about the Book class.
 *
 */
 
-public class Books {
+public class Book {
     /* Private ID counter will increment after every new book. */
     static int intIDCounter = 0;
 
@@ -19,11 +19,11 @@ public class Books {
     boolean boolFicNonFic; // Boolean fiction or non-fiction. Fiction=true, Non-Fiction=false
     int intPubDate; // Publication year.
     int intPages; // Number of pages in the book.
-    BookRating ratingBlob; // BookRating class for rating the books based on criteria specified in the class.
+    BookRating rating; // BookRating class for rating the books based on criteria specified in the class.
     String strImageURL; // A goodie for the GUI guys. Should contain an image for displaying in the GUI.
 
     /* Default Constructor */
-    Books() {
+    Book() {
         intID = intIDCounter++;
         lngISBN = 0;
         strTitle = "";
@@ -32,11 +32,12 @@ public class Books {
         boolFicNonFic = false;
         intPubDate = 0;
         intPages = 0;
-        ratingBlob = new BookRating();
+        rating = new BookRating();
+        strImageURL = "";
     }
 
     /* Full Constructor Without Ratings Specified */
-    Books(long pISBN, String pTitle, String pAuthor, String pPublisher, boolean pFicNonFic, int pPubDate, int pPages, String pImageURL) {
+    Book(long pISBN, String pTitle, String pAuthor, String pPublisher, boolean pFicNonFic, int pPubDate, int pPages, String pImageURL) {
         intID = intIDCounter++;
         lngISBN = pISBN;
         strTitle = pTitle;
@@ -45,7 +46,7 @@ public class Books {
         boolFicNonFic = pFicNonFic;
         intPubDate = pPubDate;
         intPages = pPages;
-        ratingBlob = new BookRating();
+        rating = new BookRating();
         strImageURL = pImageURL;
     }
 
@@ -115,12 +116,16 @@ public class Books {
         this.intPages = pPages;
     }
 
-    public BookRating getRatingBlob() {
-        return ratingBlob;
+    public BookRating getRating() {
+        return this.rating;
     }
 
-    public void setRatingBlob(BookRating ratingBlob) {
-        this.ratingBlob = ratingBlob;
+    public BookRating getBookRating() {
+        return this.rating;
+    }
+
+    public void setBookRating(float[][] rating) {
+        this.rating = new BookRating(rating);
     }
 
     public String getStrImageURL() {
@@ -138,10 +143,10 @@ public class Books {
     {
         System.out.println("\n***** TESTING BOOKS CLASS *****\n");
 
-        Books book1 = new Books(439023528, "The Hunger Games", "Suzanne Collins", "Scholastic", false, 2008, 374, "http://stuff.com");
-        Books book2 = new Books(451524934, "1984", "George Orwell", "Signet Classic", false, 1949, 328, "http://stuff.com");
-        Books book3 = new Books(393324818, "Moneyball: The Art of Winning an Unfair Game", "Michael Lewis", "W. W. Norton & Company", false, 2004, 320, "http://stuff.com");
-        Books book4 = new Books(140275363, "The Iliad", "Homer", "Penguin Classics", true, 1998, 704, "http://stuff.com");
+        Book book1 = new Book(439023528, "The Hunger Games", "Suzanne Collins", "Scholastic", false, 2008, 374, "http://stuff.com");
+        Book book2 = new Book(451524934, "1984", "George Orwell", "Signet Classic", false, 1949, 328, "http://stuff.com");
+        Book book3 = new Book(393324818, "Moneyball: The Art of Winning an Unfair Game", "Michael Lewis", "W. W. Norton & Company", false, 2004, 320, "http://stuff.com");
+        Book book4 = new Book(140275363, "The Iliad", "Homer", "Penguin Classics", true, 1998, 704, "http://stuff.com");
 
         System.out.println(book1.toString());
         System.out.println(book2.toString());
@@ -150,10 +155,15 @@ public class Books {
 
         System.out.println("\n***** ADD RATINGS TO BOOK RATINGS CLASS *****\n");
 
-        book1.rateBook(4.4f, 4.5f, 4.7f);
-        book2.rateBook(3.4f, 2.9f, 2.7f);
-        book3.rateBook(1.5f, 3.9f, 3.7f);
-        book4.rateBook(4.8f, 3.5f, 2.7f);
+        float[][] rating1 = {{5.0f, 5.0f, 5.0f}, {0.0f, 0.0f, 0.0f}};
+        float[][] rating2 = {{0.0f, 0.0f, 0.0f}, {3.0f, 4.0f, 1.0f}};
+        float[][] rating3 = {{5.0f, 5.0f, 0.0f}, {0.0f, 0.0f, 2.0f}};
+        float[][] rating4 = {{5.0f, 5.0f, 0.0f}, {0.0f, 0.0f, 3.0f}};
+
+        book1.getRating().setRating(rating1);
+        book2.getRating().setRating(rating2);
+        book3.getRating().setRating(rating3);
+        book4.getRating().setRating(rating4);
 
         System.out.println(book1.toString());
         System.out.println(book2.toString());
@@ -166,38 +176,32 @@ public class Books {
         return String.format("ID: %d, ISBN: %d, Title: %s, Author: %s, Publisher: %s, %s, Year Published: %d, Pages: %d," +
                         " Long: %s, Image URL: %s\n     Rating: %s",
                 intID, lngISBN, strTitle, strAuthor, strPublisher, this.isFicNonFic(this), intPubDate, intPages,
-                this.isBookLong(this), strImageURL, ratingBlob.toString(this));
+                this.isBookLong(this), strImageURL, this.getRating());
 
     }
 
     /* isBookLong() will determine if a book is long based on whether it
        has more than 500 pages. If yes, it returns true.
     */
-    public boolean isBookLong(Books pBooks){
+    public boolean isBookLong(Book pBook){
         boolean isLong = false;
-        if (pBooks.getPages() > 500){
+        if (pBook.getPages() > 500){
             isLong = true;
         }
         return isLong;
     }
 
-    /* isFicNonFic(Books) will determine if the book is fiction or non-fiction
+    /* isFicNonFic(Book) will determine if the book is fiction or non-fiction
        and will give a String saying "Fiction" or "Non-Fiction".
     */
-    public String isFicNonFic(Books pBooks){
+    public String isFicNonFic(Book pBook){
         String ficOrNon;
-        if (pBooks.getBoolFicNonFic()){
+        if (pBook.getBoolFicNonFic()){
             ficOrNon = "Fiction";
         }
         else {
             ficOrNon = "Non-Fiction";
         }
         return ficOrNon;
-    }
-
-    /* rateBook(float, float, float) will use the setRatings method in the BookRating class.
-    */
-    public void rateBook(float pRating, float pShortLongRating, float pFicNonFicRating){
-        this.ratingBlob.setRatings(this, pRating, pShortLongRating, pShortLongRating, pFicNonFicRating, pFicNonFicRating);
     }
 }

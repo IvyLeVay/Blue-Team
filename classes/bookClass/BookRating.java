@@ -1,4 +1,4 @@
-package com.company;
+package recommendation;
 
 /**
  * Created by Christopher on 4/2/2015.
@@ -6,40 +6,46 @@ package com.company;
 public class BookRating {
 
     /* Properties */
-    float fltRating; // Float number of a rating. 0.0-5.0 Range.
-    float fltShortRating; //  Float short book rating. .0-5.0 Range.
-    float fltLongRating; // Float long book rating. 0.0-5.0 Range.
-    float fltFictionRating; // Float of fiction rating. 0.0-5.0 Range.
-    float fltNonFictionRating; // Float of fiction rating. 0.0-5.0 Range.
-    float[][] arrRating; // Float 2D array.
+    private float fltFictionRating; // Float of fiction rating. 0.0-5.0 Range.
+    private float fltNonFictionRating; // Float of fiction rating. 0.0-5.0 Range.
+    private float fltShortRating; //  Float short book rating. .0-5.0 Range.
+    private float fltLongRating; // Float long book rating. 0.0-5.0 Range.
+    private float fltModernBookRating;
+    private float fltClassicBookRating;
+
+    private float[][] ratingMatrix; // Float 2D array.
 
     /* Default Constructor */
-    BookRating(){
-        fltRating = 0.0f;
-        fltShortRating = 0.0f;
-        fltLongRating = 0.0f;
-        fltFictionRating = 0.0f;
-        fltNonFictionRating = 0.0f;
-        arrRating = new float[2][2];
+    public BookRating(){
+        clearRatings();
+    }
+
+    public BookRating(float initialRating) {
+        setRating(initialRating);
     }
 
     /* Full Constructor Without Ratings Specified */
-    BookRating(float pRating, float pShortRating, float pLongRating, float pFictionRating, float pNonFictionRating) {
-        fltRating = pRating;
-        fltShortRating = pShortRating;
-        fltLongRating = pLongRating;
-        fltFictionRating = pFictionRating;
-        fltNonFictionRating = pNonFictionRating;
-        arrRating = new float[2][2];
+    public BookRating(float[][] ratingMatrix) {
+        setRating(ratingMatrix);
     }
+
+
 
     /* Getters and Setters */
-    public float getFltRating() {
-        return fltRating;
+    public float getFltModernBookRating() {
+        return fltModernBookRating;
     }
 
-    public void setFltRating(float fltRating) {
-        this.fltRating = fltRating;
+    public void setFltModernBookRating(float fltModernBookRating) {
+        this.fltModernBookRating = fltModernBookRating;
+    }
+
+    public float getFltClassicBookRating() {
+        return fltClassicBookRating;
+    }
+
+    public void setFltClassicBookRating(float fltClassicBookRating) {
+        this.fltClassicBookRating = fltClassicBookRating;
     }
 
     public float getFltShortRating() {
@@ -74,69 +80,68 @@ public class BookRating {
         this.fltNonFictionRating = fltNonFictionRating;
     }
 
-    public float[][] getArrRating() {
-        return arrRating;
+    public void setRatingMatrix(float[][] ratingMatrix) {
+        this.ratingMatrix = ratingMatrix;
     }
 
-    public void setArrRating(int row, int col, float arrRating) {
-        this.arrRating[row][col] = arrRating;
+    public float[][] getRatingMatrix() {
+        return this.ratingMatrix;
     }
 
     /* Methods */
 
+    private void clearRatings() {
+        setFltFictionRating(0);
+        setFltNonFictionRating(0);
+        setFltModernBookRating(0);
+        setFltClassicBookRating(0);
+        setFltShortRating(0);
+        setFltLongRating(0);
+        setRatingMatrix(new float[][]{{0.0f}});
+    }
+
     /* toString() will print in the console the ratings objects properties. */
     public String toString(){
-        return this.getFltRating() + ", " + this.getFltShortRating() + ", " + this.getFltLongRating() + ", " + this.getFltFictionRating() + ", " + this.getFltNonFictionRating();
+        return String.format("Fiction Rating: %f\n" +
+                "     Non-Fiction Rating: %f\n" +
+                "     Modern Rating: %f\n" +
+                "     Classic Rating: %f\n" +
+                "     Short Rating: %f\n" +
+                "     Long Rating: %f",
+                this.getFltFictionRating(),
+                this.getFltNonFictionRating(),
+                this.getFltModernBookRating(),
+                this.getFltClassicBookRating(),
+                this.getFltShortRating(),
+                this.getFltLongRating());
     }
 
-    /* toString(Books) will print in the console the ratings objects properties based on book specified. */
-    public String toString(Books pBook){
-        float[] rtnRatingsArr = this.getRatings(pBook);
-        return rtnRatingsArr[0] + ", " + rtnRatingsArr[1] + ", " + rtnRatingsArr[2];
-    }
-
-    /* setRatings(Books, float, float, float, float, float) this sets the rating for a book and depending on the
-       properties of the book (short/long, fiction/non-fiction), it will place the results in arrRating.
+    /* setRatings(float, float, float, float, float) this sets the rating for a book and depending on the
+       properties of the book (short/long, fiction/non-fiction), it will place the results in ratingMatrix.
    */
-    public void setRatings(Books pBook, float pRating, float pShortRating, float pLongRating, float pNonFictionRating, float pFictionRating) {
-        this.setFltRating(pRating);
-        this.setFltShortRating(pShortRating);
-        this.setFltLongRating(pLongRating);
-        this.setFltNonFictionRating(pNonFictionRating);
-        this.setFltFictionRating(pFictionRating);
-        if (pBook.isBookLong(pBook)) {
-            this.setArrRating(1, 0, pShortRating);
-        } else {
-            this.setArrRating(0, 0, pLongRating);
-        }
-        if (pBook.getBoolFicNonFic()){
-            this.setArrRating(1, 1, pFictionRating);
-        }
-        else {
-            this.setArrRating(0, 1, pNonFictionRating);
-        }
+
+    public void setRating(float rating) {
+        setFltFictionRating(rating);
+        setFltNonFictionRating(rating);
+        setFltModernBookRating(rating);
+        setFltClassicBookRating(rating);
+        setFltShortRating(rating);
+        setFltLongRating(rating);
+        setRatingMatrix(new float[][]{});
     }
 
-    /* getRatings(Books) this method will return an array with each rating depending on the properties of the book.
-     * The array would look like this: [bookRating, short/long rating, fiction/non-fiction rating]
-     */
-    public float[] getRatings(Books pBook){
-        float[] rtnArrRating = new float[3];
-        rtnArrRating[0] = this.getFltRating();
-        if (pBook.isBookLong(pBook)) {
-            rtnArrRating[1] = this.getArrRating()[1][0];
-        }
-        else {
-
-            rtnArrRating[1] = this.getArrRating()[0][0];
-        }
-        if (pBook.getBoolFicNonFic()){
-            rtnArrRating[2] = this.getArrRating()[1][1];
-        }
-        else {
-            rtnArrRating[2] = this.getArrRating()[0][1];
-        }
-
-        return rtnArrRating;
+    public void setRating(float[][] ratingMatrix) {
+        setFltFictionRating(ratingMatrix[0][0]);
+        setFltNonFictionRating(ratingMatrix[1][0]);
+        setFltModernBookRating(ratingMatrix[0][1]);
+        setFltClassicBookRating(ratingMatrix[1][1]);
+        setFltShortRating(ratingMatrix[0][2]);
+        setFltLongRating(ratingMatrix[1][2]);
+        setRatingMatrix(ratingMatrix);
     }
+
+    /* getRatings(Book) this method will return an array with each rating depending on the properties of the book.
+         * The array would look like this: [bookRating, short/long rating, fiction/non-fiction rating]
+         */
+
 }
