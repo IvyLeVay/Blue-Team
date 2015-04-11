@@ -1,4 +1,4 @@
-package recommendation;
+package recommendation.classes.bookClass;
 
 /* Class: Book
 *  Author: Christopher Nellis
@@ -23,7 +23,7 @@ public class Book {
     String strImageURL; // A goodie for the GUI guys. Should contain an image for displaying in the GUI.
 
     /* Default Constructor */
-    Book() {
+    public Book() {
         intID = intIDCounter++;
         lngISBN = 0;
         strTitle = "";

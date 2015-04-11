@@ -2,11 +2,15 @@
  *Blue Team's Recommendation Engine
  *Data comparison and crawler
  */
-package recommendation;
+package recommendation.classes.listProcessor;
+
+import recommendation.User;
+import recommendation.classes.bookClass.Book;
+
+import java.util.LinkedList;
 
 import static java.lang.Math.abs;
-import java.util.LinkedList;
-import java.util.List;
+
 
 /**
  * This work is done By Chris Berns Northern Essex Community College Computer
