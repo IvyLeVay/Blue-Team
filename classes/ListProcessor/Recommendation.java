@@ -2,10 +2,10 @@
  *Blue Team's Recommendation Engine
  *Data comparison and crawler
  */
-package recommendation.classes.listProcessor;
+package classes.ListProcessor;
 
-import recommendation.User;
-import recommendation.classes.bookClass.Book;
+import classes.ListProcessor.User;
+import classes.bookClass.Book;
 
 import java.util.LinkedList;
 

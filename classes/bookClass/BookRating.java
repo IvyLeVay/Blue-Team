@@ -1,4 +1,4 @@
-package recommendation.classes.bookClass;
+package classes.bookClass;
 
 /**
  * Created by Christopher on 4/2/2015.

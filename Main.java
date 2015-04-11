@@ -1,7 +1,7 @@
-package recommendation;
 
-import recommendation.classes.bookClass.Book;
-import recommendation.classes.listProcessor.Recommendation;
+
+import classes.bookClass.Book;
+import classes.ListProcessor.Recommendation;
 
 public class Main {
 
@@ -13,7 +13,7 @@ public class Main {
     public static void main(String [ ] args)
     {
         // Test main method in book. Not sure if there is a better way to handle this.
-        //Book.main();
+        Book.main();
 
         // Test main method in recommendation. Not sure if there is a better way to handle this.
         Recommendation.main(null);

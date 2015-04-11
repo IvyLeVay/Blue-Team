@@ -1,4 +1,4 @@
-package recommendation.classes.bookClass;
+package classes.bookClass;
 
 /* Class: Book
 *  Author: Christopher Nellis

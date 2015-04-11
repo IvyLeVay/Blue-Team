@@ -1,6 +1,6 @@
 
 
-package userclass;
+package classes.userClass;
 
 
 public class UserClass {
