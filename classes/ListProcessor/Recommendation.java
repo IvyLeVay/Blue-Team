@@ -5,6 +5,7 @@
 package classes.ListProcessor;
 
 import classes.bookClass.Book;
+import classes.userClass.*;
 
 import java.util.LinkedList;
 
@@ -22,7 +23,7 @@ public class Recommendation {
     public static class Crawler {
 
         float worstMatch;
-        classes.userClassAllen.User user;
+        classes.userClass.User user;
 
         public Crawler(classes.userClass.User user, LinkedList<Book> bookList) {
             this.user = user;
@@ -64,6 +65,7 @@ public class Recommendation {
     }
 
     public static void main(String[] args) {
+        System.out.println("\n\n***** Testing Recommendation Class *****\n");
         Book book = new Book();
 
         float[][] bookRatingMatrix = {{5.0f, 5.0f, 5.0f},
@@ -71,12 +73,12 @@ public class Recommendation {
 
         float[] userPrefMatrix = {5.0f, -5.0f, 5.0f};
         book.getBookRating().setRating(bookRatingMatrix);
-        classes.userClass.User user = new classes.userClass.User(userPrefMatrix);
+        User user = new User(userPrefMatrix);
 
    
         //book.getBookRating().printRatings();
        // user.printUserPrefs();
-        LinkedList<Book> books = new LinkedList<Book>();
+        LinkedList<Book> books = new LinkedList<>();
         books.add(book);
         Crawler crawl = new Crawler(user, books);
 

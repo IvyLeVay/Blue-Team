@@ -139,7 +139,7 @@ public class Book {
     /* Methods */
 
     // Create some test books with a static main class.
-    public static void main()
+    public static void main(String[] args)
     {
         System.out.println("\n***** TESTING BOOKS CLASS *****\n");
 
@@ -172,6 +172,7 @@ public class Book {
     }
 
     /* toString() will print in the console the book objects properties. */
+    @Override
     public String toString(){
         return String.format("ID: %d, ISBN: %d, Title: %s, Author: %s, Publisher: %s, %s, Year Published: %d, Pages: %d," +
                         " Long: %s, Image URL: %s\n     Rating: %s",

@@ -3,7 +3,7 @@ package classes.bookClass;
 /**
  * Created by Christopher on 4/2/2015.
  */
-public class BookRating {
+public final class BookRating {
 
     /* Properties */
     private float fltFictionRating; // Float of fiction rating. 0.0-5.0 Range.
@@ -101,6 +101,7 @@ public class BookRating {
     }
 
     /* toString() will print in the console the ratings objects properties. */
+    @Override
     public String toString(){
         return String.format("Fiction Rating: %f\n" +
                 "     Non-Fiction Rating: %f\n" +
