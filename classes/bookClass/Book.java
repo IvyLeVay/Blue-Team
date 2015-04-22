@@ -37,7 +37,7 @@ public class Book {
     }
 
     /* Full Constructor Without Ratings Specified */
-    Book(long pISBN, String pTitle, String pAuthor, String pPublisher, boolean pFicNonFic, int pPubDate, int pPages, String pImageURL) {
+    public Book(long pISBN, String pTitle, String pAuthor, String pPublisher, boolean pFicNonFic, int pPubDate, int pPages, String pImageURL) {
         intID = intIDCounter++;
         lngISBN = pISBN;
         strTitle = pTitle;
@@ -135,7 +135,8 @@ public class Book {
     public void setStrImageURL(String strImageURL) {
         this.strImageURL = strImageURL;
     }
-
+    
+    
     /* Methods */
 
     // Create some test books with a static main class.

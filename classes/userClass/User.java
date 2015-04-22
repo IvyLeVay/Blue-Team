@@ -13,6 +13,7 @@ public class User {
     private float shrtOrLongPref;
     private float newOrClasicPref;
     
+    
     float[] userPref;
     
     /** CONSTRUCTORS **/

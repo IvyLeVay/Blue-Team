@@ -16,7 +16,7 @@ public final class BookRating {
     private float[][] ratingMatrix; // Float 2D array.
 
     /* Default Constructor */
-    public BookRating(){
+    public BookRating() {
         clearRatings();
     }
 
@@ -29,9 +29,11 @@ public final class BookRating {
         setRating(ratingMatrix);
     }
 
-
-
+    public int getArrayLength() {
+        return ratingMatrix[0].length;
+    }
     /* Getters and Setters */
+
     public float getFltModernBookRating() {
         return fltModernBookRating;
     }
@@ -89,7 +91,6 @@ public final class BookRating {
     }
 
     /* Methods */
-
     private void clearRatings() {
         setFltFictionRating(0);
         setFltNonFictionRating(0);
@@ -102,13 +103,13 @@ public final class BookRating {
 
     /* toString() will print in the console the ratings objects properties. */
     @Override
-    public String toString(){
-        return String.format("Fiction Rating: %f\n" +
-                "     Non-Fiction Rating: %f\n" +
-                "     Modern Rating: %f\n" +
-                "     Classic Rating: %f\n" +
-                "     Short Rating: %f\n" +
-                "     Long Rating: %f",
+    public String toString() {
+        return String.format("Fiction Rating: %f\n"
+                + "     Non-Fiction Rating: %f\n"
+                + "     Modern Rating: %f\n"
+                + "     Classic Rating: %f\n"
+                + "     Short Rating: %f\n"
+                + "     Long Rating: %f",
                 this.getFltFictionRating(),
                 this.getFltNonFictionRating(),
                 this.getFltModernBookRating(),
@@ -118,9 +119,8 @@ public final class BookRating {
     }
 
     /* setRatings(float, float, float, float, float) this sets the rating for a book and depending on the
-       properties of the book (short/long, fiction/non-fiction), it will place the results in ratingMatrix.
-   */
-
+     properties of the book (short/long, fiction/non-fiction), it will place the results in ratingMatrix.
+     */
     public void setRating(float rating) {
         setFltFictionRating(rating);
         setFltNonFictionRating(rating);
@@ -142,7 +142,6 @@ public final class BookRating {
     }
 
     /* getRatings(Book) this method will return an array with each rating depending on the properties of the book.
-         * The array would look like this: [bookRating, short/long rating, fiction/non-fiction rating]
-         */
-
+     * The array would look like this: [bookRating, short/long rating, fiction/non-fiction rating]
+     */
 }
