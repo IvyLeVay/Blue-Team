@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class UserDao {
 
-    private final static String userFileList = "C:/users.txt";
+    private final static String userFileList = "./users.txt"; //changed from C:/ no abs pathing
     
     private String getUserFromRecord(User user){
         return user.getUserName(); 
