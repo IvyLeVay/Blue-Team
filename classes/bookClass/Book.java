@@ -177,17 +177,17 @@ public class Book {
     public String toString(){
         return String.format("ID: %d, ISBN: %d, Title: %s, Author: %s, Publisher: %s, %s, Year Published: %d, Pages: %d," +
                         " Long: %s, Image URL: %s\n     Rating: %s",
-                intID, lngISBN, strTitle, strAuthor, strPublisher, this.isFicNonFic(this), intPubDate, intPages,
-                this.isBookLong(this), strImageURL, this.getRating());
+                intID, lngISBN, strTitle, strAuthor, strPublisher, this.isFicNonFic(), intPubDate, intPages,
+                this.isBookLong(), strImageURL, this.getRating());
 
     }
 
     /* isBookLong() will determine if a book is long based on whether it
        has more than 500 pages. If yes, it returns true.
     */
-    public boolean isBookLong(Book pBook){
+    public boolean isBookLong(){
         boolean isLong = false;
-        if (pBook.getPages() > 500){
+        if (this.getPages() > 500){
             isLong = true;
         }
         return isLong;
@@ -196,9 +196,9 @@ public class Book {
     /* isFicNonFic(Book) will determine if the book is fiction or non-fiction
        and will give a String saying "Fiction" or "Non-Fiction".
     */
-    public String isFicNonFic(Book pBook){
+    public String isFicNonFic(){
         String ficOrNon;
-        if (pBook.getBoolFicNonFic()){
+        if (this.getBoolFicNonFic()){
             ficOrNon = "Fiction";
         }
         else {

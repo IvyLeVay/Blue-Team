@@ -1,8 +1,10 @@
 package classes.bookClass;
 
-/**
- * Created by Christopher on 4/2/2015.
- */
+/* Class: BookRating
+*  Author: Christopher Nellis
+*  Description: Stores information about the ratings for a book.
+*
+*/
 public final class BookRating {
 
     /* Properties */
@@ -10,8 +12,8 @@ public final class BookRating {
     private float fltNonFictionRating; // Float of fiction rating. 0.0-5.0 Range.
     private float fltShortRating; //  Float short book rating. .0-5.0 Range.
     private float fltLongRating; // Float long book rating. 0.0-5.0 Range.
-    private float fltModernBookRating;
-    private float fltClassicBookRating;
+    private float fltModernBookRating; // Float modern book rating. 0.0-5.0 Range.
+    private float fltClassicBookRating; // Float classic book rating. 0.0-5.0 Range.
 
     private float[][] ratingMatrix; // Float 2D array.
 
@@ -118,8 +120,7 @@ public final class BookRating {
                 this.getFltLongRating());
     }
 
-    /* setRatings(float, float, float, float, float) this sets the rating for a book and depending on the
-     properties of the book (short/long, fiction/non-fiction), it will place the results in ratingMatrix.
+    /* setRatings(float) this sets all the ratings for a book to one value.
      */
     public void setRating(float rating) {
         setFltFictionRating(rating);
@@ -131,6 +132,10 @@ public final class BookRating {
         setRatingMatrix(new float[][]{});
     }
 
+    /* setRatings(float[][]) this sets the rating for a book and depending on the
+     properties of the book (short/long, fiction/non-fiction), it will place the results in ratingMatrix.
+     This is expected to be used by the GUI I think.
+     */
     public void setRating(float[][] ratingMatrix) {
         setFltFictionRating(ratingMatrix[0][0]);
         setFltNonFictionRating(ratingMatrix[1][0]);
@@ -140,8 +145,4 @@ public final class BookRating {
         setFltLongRating(ratingMatrix[1][2]);
         setRatingMatrix(ratingMatrix);
     }
-
-    /* getRatings(Book) this method will return an array with each rating depending on the properties of the book.
-     * The array would look like this: [bookRating, short/long rating, fiction/non-fiction rating]
-     */
 }
