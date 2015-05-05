@@ -1,0 +1,55 @@
+package ui_reccomendationengine;
+
+
+/**
+ *
+ * @author Stephen O'Meara
+ * Date: 3/12/2015
+ * 
+ * Information: The player data class and properties. 
+ * Reason behind person and not user is a person 
+ * usually reads books and not a user.
+ * 
+ * Reccomendation: We have a person_preferences class that handles
+ * what a user has read... what books were the users favorite...
+ * what.. books do they wanna read and put them all into an array list. 
+ */
+
+public class User {
+    //Basic Person properties
+    private int id;
+    private int age = 0;
+    private String userName = ""; 
+    private String firstName = ""; 
+    private String lastName = "";
+    
+    public User(String userName) {
+        this.userName = userName;  
+    }  
+    
+    // getters and setters
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public String getUserName() {
+        return userName;
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+}
