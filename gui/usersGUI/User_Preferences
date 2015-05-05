@@ -1,0 +1,20 @@
+package ui_reccomendationengine;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Stephen O'Meara
+ * Date: 3/12/2015
+ * 
+ * Information: This class hold all the users (Person) preferences.
+ * It includes the books they have read and their percentage completed.
+ * It includes books they want to read, and books they HAVE read.
+ */
+public class User_Preferences {
+    // An arraylist of categorized books. Add more if you wish
+    //ArrayList<Books> readBooks = new ArrayList<Books>(); 
+    //ArrayList<Books> interestedBooks = new ArrayList<Books>();
+    //ArrayList<Books> completedBooks = new ArrayList<Books>();
+    
+}
